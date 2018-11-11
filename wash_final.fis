@@ -1,0 +1,49 @@
+[System]
+Name='wash_final'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='sludge'
+Range=[0 100]
+NumMFs=3
+MF1='SD':'trimf',[-50 0 50]
+MF2='MD':'trimf',[0 50 100]
+MF3='LD':'trimf',[50 100 150]
+
+[Input2]
+Name='grease'
+Range=[0 100]
+NumMFs=3
+MF1='NG':'trimf',[-50 0 50]
+MF2='MG':'trimf',[0 50 100]
+MF3='LG':'trimf',[50 100 150]
+
+[Output1]
+Name='wash'
+Range=[0 120]
+NumMFs=5
+MF1='VS':'trimf',[-20 0 20]
+MF2='S':'trimf',[0 20 50]
+MF3='M':'trimf',[20 50 80]
+MF4='L':'trimf',[50 80 120]
+MF5='VL':'trimf',[80 120 160]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 3 (1) : 1
+1 3, 4 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
+2 3, 4 (1) : 1
+3 1, 3 (1) : 1
+3 2, 4 (1) : 1
+3 3, 5 (1) : 1
